@@ -1,0 +1,23 @@
+replicaCount: 1
+
+image:
+  repository: alysonfranklin/ingressroute-monitor
+  tag: v1.1
+  pullPolicy: Always
+
+serviceAccount:
+  name: heimdall-dns-watcher-sa
+
+clusterRole:
+  name: heimdall-dns-watcher-role
+
+clusterRoleBinding:
+  name: heimdall-dns-watcher-binding
+
+logLevel: debug
+
+secrets:
+  name: cloudflare-secrets
+  apiToken: ""
+  zoneId: ""
+  targetCnameAddress: ""

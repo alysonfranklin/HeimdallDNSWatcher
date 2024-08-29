@@ -1,0 +1,20 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  labels:
+    app: heimdall-ingressroute
+    dns: cloudflare
+    proxyEnabled: "false"
+  name: heilmdall-ingressroute
+  namespace: default
+spec:
+  entryPoints:
+  - web
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`heimdall.cloud.tech`)
+    services:
+    - kind: Service
+      name: heilmdall-service
+      port: 80
