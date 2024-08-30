@@ -103,23 +103,24 @@ def handle_ingressroute_event(event):
             return
 
         # Lidar com eventos 'ADDED' ou 'MODIFIED'
-        if event['type'] == 'ADDED' or event['type'] == 'MODIFIED':
-            if existing_record:
-                # Verifique se o host mudou e, se sim, atualize o registro
-                logger.info(f"IngressRoute modified: {metadata.get('name')} - Updating DNS record for host {new_host}.")
-                update_dns_record(existing_record['id'], new_host, TARGET_CNAME_ADDRESS, app_label, proxied)
-            else:
-                # Se não houver um registro correspondente, crie um novo
-                logger.info(f"IngressRoute added: {new_host}")
-                create_dns_record(new_host, TARGET_CNAME_ADDRESS, app_label, proxied)
+        match event['type']:
+            case 'ADDED', 'MODIFIED':
+                if existing_record:
+                    # Verifique se o host mudou e, se sim, atualize o registro
+                    logger.info(f"IngressRoute modified: {metadata.get('name')} - Updating DNS record for host {new_host}.")
+                    update_dns_record(existing_record['id'], new_host, TARGET_CNAME_ADDRESS, app_label, proxied)
+                else:
+                    # Se não houver um registro correspondente, crie um novo
+                    logger.info(f"IngressRoute added: {new_host}")
+                    create_dns_record(new_host, TARGET_CNAME_ADDRESS, app_label, proxied)
 
-        # Lidar com eventos 'DELETED'
-        elif event['type'] == 'DELETED':
-            if existing_record:
-                logger.info(f"IngressRoute deleted: {metadata.get('name')} - Deleting DNS record {existing_record['name']}")
-                delete_dns_record(existing_record['id'], existing_record['name'])
-            else:
-                logger.warning(f"No existing DNS record found for deleted IngressRoute: {metadata.get('name')}")
+            # Lidar com eventos 'DELETED'
+            case 'DELETED':
+                if existing_record:
+                    logger.info(f"IngressRoute deleted: {metadata.get('name')} - Deleting DNS record {existing_record['name']}")
+                    delete_dns_record(existing_record['id'], existing_record['name'])
+                else:
+                    logger.warning(f"No existing DNS record found for deleted IngressRoute: {metadata.get('name')}")
 
 def main():
     logger.info("Starting IngressRoute DNS Manager")
