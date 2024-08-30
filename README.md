@@ -10,6 +10,10 @@ Além de criar novos registros DNS, o Heimdall DNS Watcher também é responsáv
 
 Com sua vigilância constante e automação inteligente, o Heimdall DNS Watcher simplifica o gerenciamento de DNS para aplicativos Kubernetes que utilizam o `Traefik` como Ingress Controller. Ele garante que os registros DNS no Cloudflare estejam sempre em sincronia com os recursos IngressRoute no Kubernetes, eliminando a necessidade de intervenção manual e reduzindo a possibilidade de erros.
 
+## Por que o nome da aplicação é Heimdall?
+
+Heimdall é o **guardião** dos deuses na mitologia nórdica, conhecido por sua vigilância e capacidade de **ver e ouvir tudo**. Assim como Heimdall vigia Asgard, essa aplicação monitora constantemente os eventos do Kubernetes IngressRoute e toma as ações apropriadas nos registros DNS.
+
 ## Funcionalidades
 
 - Monitora eventos de criação, modificação e exclusão de IngressRoutes no cluster Kubernetes.
@@ -57,4 +61,8 @@ Após a criação do ingressRoute, você verá no log da aplicação a informaç
 
 Agora vamos editar o ingressroute.yaml, desabilitar o proxy e executar novamente `kubectl apply -f ingressroute.yaml`
 <img width="933" alt="Screenshot 2024-08-30 at 11 01 41" src="https://github.com/user-attachments/assets/f5bf095a-af2f-445f-a770-36d8525eb981">
+
+Hora de excluir ingressroute com `kubectl delete -f ingressroute.yaml`.
+No momento que você exclui o ingressroute, a aplicação identifica esse evento e entende que precisa excluir a entrada DNS do **CloudFlare**
+<img width="868" alt="Screenshot 2024-08-30 at 11 01 41" src="https://github.com/user-attachments/assets/8cc16903-a545-42eb-a995-03ea8d9ff1bf">
 
