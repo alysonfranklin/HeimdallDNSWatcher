@@ -34,7 +34,7 @@ Antes de executar a aplicação, certifique-se de ter os seguintes pré-requisit
 
 1. Clone este repositório para o seu ambiente local.
 
-2. Defina as seguintes variáveis de ambiente no arquivo values.yaml:
+2. Defina as seguintes variáveis de ambiente no arquivo `values.yaml`:
 
 - `CLOUDFLARE_API_TOKEN`: O token de API do Cloudflare com permissões para ler e gravar registros DNS.
 - `CLOUDFLARE_ZONE_ID`: O ID da zona DNS no Cloudflare onde os registros serão gerenciados.
@@ -53,6 +53,8 @@ $ kubectl logs -f -l app=heimdall-dns-watcher
 ```
 
 4. Instale a aplicação Heimdall via Kubectl
+
+**Antes de instalar via Kubectl, é necessário informar seus dados de conexão no arquivo manifest/secret.yaml**
 
 ```bash
 $ kubectl apply -f ./manifest/ --recursive
