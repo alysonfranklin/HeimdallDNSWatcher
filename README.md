@@ -41,7 +41,18 @@ Antes de executar a aplicação, certifique-se de ter os seguintes pré-requisit
 - `TARGET_CNAME_ADDRESS`: O endereço CNAME de destino para os registros DNS criados. Pode ser DNS do loadbalancer do ingress, endpoint do AWS CloudFront, AWS API Gateway, etc.
 - `LOG_LEVEL` (opcional): O nível de log desejado (por exemplo, INFO, DEBUG). O padrão é INFO.
 
-3. Instale os recursos via kubectl:
+
+3. Instale a aplicação Heimdall em seu Cluster Kubernetes via helm
+```bash
+$ helm upgrade --install heimdall ./heimdall
+```
+
+Aguarde a aplicação ficar `Running` e visualize os logs dela
+```bash
+$ kubectl logs -f -l app=heimdall-dns-watcher
+```
+
+4. Instale a aplicação Heimdall via Kubectl
 
 ```bash
 $ kubectl apply -f ./manifest/ --recursive
@@ -50,7 +61,8 @@ $ kubectl apply -f ./manifest/ --recursive
 $ kubectl logs -f -l app=heimdall-dns-watcher
 ```
 
-4. Crie o IngressRoute
+5. Crie o IngressRoute
+
 Agora abra outro terminal e crie o ingressRoute com o seguinte comando:
 ```bash
 $ kubectl apply -f ingressroute.yaml
