@@ -66,3 +66,8 @@ Hora de excluir ingressroute com `kubectl delete -f ingressroute.yaml`.
 No momento que você exclui o ingressroute, a aplicação identifica esse evento e entende que precisa excluir a entrada DNS do **CloudFlare**
 <img width="868" alt="Screenshot 2024-08-30 at 11 01 41" src="https://github.com/user-attachments/assets/8cc16903-a545-42eb-a995-03ea8d9ff1bf">
 
+# Contribuição
+Contribuições são bem-vindas! Se você encontrar algum problema, tiver sugestões ou quiser adicionar novos recursos, fique à vontade para abrir uma issue ou enviar um pull request.
+
+# Licença
+Este projeto está licenciado sob a MIT License.
