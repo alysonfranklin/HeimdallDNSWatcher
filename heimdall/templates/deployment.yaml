@@ -21,19 +21,10 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: CLOUDFLARE_API_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.secrets.name }}
-                  key: CLOUDFLARE_API_TOKEN
+              value: {{ .Values.secrets.apiToken | b64dec }}
             - name: CLOUDFLARE_ZONE_ID
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.secrets.name }}
-                  key: CLOUDFLARE_ZONE_ID
+              value: {{ .Values.secrets.zoneId | b64dec }}
             - name: TARGET_CNAME_ADDRESS
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.secrets.name }}
-                  key: TARGET_CNAME_ADDRESS
+              value: {{ .Values.secrets.targetCnameAddress | b64dec }}
             - name: LOG_LEVEL
               value: {{ .Values.logLevel }}

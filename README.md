@@ -30,7 +30,7 @@ Antes de executar a aplicação, certifique-se de ter os seguintes pré-requisit
 
 1. Clone este repositório para o seu ambiente local.
 
-2. Defina as seguintes variáveis de ambiente no arquivo secret.yaml:
+2. Defina as seguintes variáveis de ambiente no arquivo values.yaml:
 
 - `CLOUDFLARE_API_TOKEN`: O token de API do Cloudflare com permissões para ler e gravar registros DNS.
 - `CLOUDFLARE_ZONE_ID`: O ID da zona DNS no Cloudflare onde os registros serão gerenciados.
@@ -51,3 +51,6 @@ Agora abra outro terminal e crie o ingressRoute com o seguinte comando:
 ```bash
 $ kubectl apply -f ingressroute.yaml
 ```
+
+Após a criação do ingressRoute, você verá no log da aplicação a informação de criação de DNS no CloudFlare.
+
