@@ -53,4 +53,4 @@ $ kubectl apply -f ingressroute.yaml
 ```
 
 Após a criação do ingressRoute, você verá no log da aplicação a informação de criação de DNS no CloudFlare.
-
+<img width="873" alt="Create ingressroute" src="https://github.com/user-attachments/assets/f6e6c003-af7f-4b56-b1b8-d0f70a61c74f">
