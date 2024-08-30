@@ -54,3 +54,7 @@ $ kubectl apply -f ingressroute.yaml
 
 Após a criação do ingressRoute, você verá no log da aplicação a informação de criação de DNS no CloudFlare.
 <img width="873" alt="Create ingressroute" src="https://github.com/user-attachments/assets/f6e6c003-af7f-4b56-b1b8-d0f70a61c74f">
+
+Agora vamos editar o ingressroute.yaml, desabilitar o proxy e executar novamente `kubectl apply -f ingressroute.yaml`
+<img width="933" alt="Screenshot 2024-08-30 at 11 01 41" src="https://github.com/user-attachments/assets/f5bf095a-af2f-445f-a770-36d8525eb981">
+
